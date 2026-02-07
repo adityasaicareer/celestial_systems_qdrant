@@ -71,6 +71,8 @@ results=client.query_points(
   query=query_embeding,
   limit=5
 )
+print("\n\n")
+print(f"The Query :  {query}")
 
 for index,i in enumerate(results.points):
   print("\n\n")

@@ -150,5 +150,10 @@ Then we search the QubridDB using the query and set the limit to control how man
 
 
 
+# Sample Outputs
 
+### Query: 
 
+![Qubrid Output](./qubrid1.png)
+
+![Qubrid Output](./qubrid2.png)
