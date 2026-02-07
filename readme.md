@@ -23,7 +23,7 @@ import pprint
 * qdrant_client import QdrantClient helps us to create and use the qdrant Vector DB
 * qdrant_client.http.models import VectorParams,Distance,PointStruct helps us to configure the qdrant setup the Distance and get Vectorparams and PointStruct a structure of data to insert to Qdrant
 
-### Loading the PDf Docuement 
+### Loading the PDF Docuement 
 
 ```
 filepath="./example.pdf"
