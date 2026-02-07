@@ -84,3 +84,4 @@ for index,i in enumerate(results.points):
   print(f"\nSource : {i.payload['source']}")
 
 client.close()
+

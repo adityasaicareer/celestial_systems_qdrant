@@ -1,0 +1,8 @@
+langchain-community>=0.0.30
+langchain-text-splitters>=0.0.1
+langchain-huggingface>=0.0.3
+qdrant-client>=1.7.0
+sentence-transformers>=2.2.2
+pypdf>=3.17.0
+torch>=2.0.0
+numpy>=1.23.0

@@ -2,6 +2,10 @@
 
 **Important:** This Code could run both in 3.11 and 3.14
 
+**Steps to Run the Code**
+* pip install -r requirements.txt
+* python3 rag_qdrant.py
+
 
 Libraries Required:
 
