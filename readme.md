@@ -49,8 +49,7 @@ for idx,chunk in enumerate(chunks):
   chunk.metadata["chunk_id"]=idx
 
 ```
-The above Code was used to split the loaded document into chunks each with 500 Characters and 100 characters overlap with the Previous chunk to avoid Information loss and add the chunk index using for loop.
-
+From the Above code we use the RecursivecharacterTextSplitter for the chunking of the documents and each chunk has 500 characters as the information was largely in paragraph format and overlap of 100 to preserve the edge information
 
 ### Embedding Loading
 
