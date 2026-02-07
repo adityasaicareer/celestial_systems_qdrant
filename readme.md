@@ -114,7 +114,35 @@ print(info.points_count)
 we use the client.upsert to insert the data into the QubridDB and get_collection to have the info and metadata of data.
 
 
+### Query
 
+```
+query="How does top management demonstrate leadership and commitment to the ISMS?"
+
+query_embeding=embedings.embed_query(query)
+results=client.query_points(
+  collection_name="ragdata",  
+  query=query_embeding,
+  limit=5
+)
+
+for index,i in enumerate(results.points):
+  print("\n\n")
+  print('-'*40)
+  print(f"\nResult : {index+1}")
+  print(f"\nChunk ID : {i.id}")
+  print(f"\nChunk Content :{i.payload['text']}")
+
+  print(f"\nScore : {i.score}")
+  print(f"\nPage :{i.payload['page']}")
+  print(f"\nSource : {i.payload['source']}")
+
+client.close()
+```
+
+The Query was first embeded with the same Model we embeded the chunks from PDF Document.
+
+Then we search the QubridDB using the query and set the limit to control how many relavent results we see.
 
 
 
