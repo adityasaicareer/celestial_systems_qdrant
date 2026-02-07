@@ -159,7 +159,7 @@ Then we search the QubridDB using the query and set the limit to control how man
 
 ![Qubrid Output](./qubrid2.png)
 
-### What are the requirements for establishing and communicating the information security policy??
+### Query: What are the requirements for establishing and communicating the information security policy??
 ### Top K=5
 
 ![Qubrid Output](./qubrid3.png)
@@ -167,3 +167,11 @@ Then we search the QubridDB using the query and set the limit to control how man
 ![Qubrid Output](./qubrid4.png)
 
 ![Qubrid Output](./qubrid5.png)
+
+### Query: What are the key steps involved in the information security risk assessment process???
+### Top K=3
+
+![Qubrid Output](./qubrid6.png)
+
+![Qubrid Output](./qubrid7.png)
+

@@ -63,9 +63,9 @@ client.upsert(
 info=client.get_collection("ragdata")
 print(info.points_count)
 
-query="What are the requirements for establishing and communicating the information security policy?"
+query="What are the key steps involved in the information security risk assessment process?"
 
-topk=5
+topk=3
 
 query_embeding=embedings.embed_query(query)
 results=client.query_points(
