@@ -30,7 +30,6 @@ embedings=HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-
 texts=[chunk.page_content for chunk in chunks]
 metadata=[chunk.metadata for chunk in chunks]
 ids=[str(chunk.metadata["chunk_id"]) for chunk in chunks]
-
 vectors=embedings.embed_documents(texts)
 
 client=QdrantClient(path="./vectordb/qdrant")

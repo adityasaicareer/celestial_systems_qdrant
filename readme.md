@@ -45,6 +45,78 @@ for idx,chunk in enumerate(chunks):
   chunk.metadata["chunk_id"]=idx
 
 ```
-The above Code was used to split the loaded document each with 500 Characters and 100 characters overlap with the Previous chunk to avoid Information loss
+The above Code was used to split the loaded document into chunks each with 500 Characters and 100 characters overlap with the Previous chunk to avoid Information loss and add the chunk index using for loop.
+
+
+### Embedding Loading
+
+```
+embedings=HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+
+texts=[chunk.page_content for chunk in chunks]
+metadata=[chunk.metadata for chunk in chunks]
+ids=[str(chunk.metadata["chunk_id"]) for chunk in chunks]
+vectors=embedings.embed_documents(texts)
+
+```
+
+Loading the embeding model using the HuggingFace Library **sentence-transformers/all-MiniLM-L6-v2** Used to embed the Chunk which was an Industry Standard
+
+Destructure the Document Chunks into Text,Metadata,Chunk Id and then producing the Vectors using HuggingFace model
+
+
+### Creating the Qdrant Client and Preparing the Data to Insert
+
+```
+client=QdrantClient(path="./vectordb/qdrant")
+client.recreate_collection(
+  collection_name="ragdata",
+  vectors_config=VectorParams(
+    size=384,
+    distance=Distance.COSINE
+  )
+)
+vectors=embedings.embed_documents(texts)
+points=[]
+for chunk,vector in zip(chunks,vectors):
+  points.append(
+    PointStruct(
+      id=chunk.metadata["chunk_id"],
+      vector=vector,
+      payload={
+        "text":chunk.page_content,
+        **chunk.metadata
+      }
+    )
+  )
+
+```
+
+* The Above Code will create a Qdrant Client that will initiate the Qdrant Database 
+
+* We create the Collection named **ragdata** and configure the collection with vector_config set the size for parameters to **384** and Store using the **COSINE** Function
+
+* Prepare the All the Points to be inserted to the Qdrant using a PointStruct imported from qdrant_client.http.models including the vectors and metadata
+
+### Insert the Data Into the QbridDB
+
+```
+
+client.upsert(
+  collection_name="ragdata",
+  points=points
+)
+
+info=client.get_collection("ragdata")
+print(info.points_count)
+
+```
+we use the client.upsert to insert the data into the QubridDB and get_collection to have the info and metadata of data.
+
+
+
+
+
+
 
 
