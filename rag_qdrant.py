@@ -63,13 +63,15 @@ client.upsert(
 info=client.get_collection("ragdata")
 print(info.points_count)
 
-query="How does top management demonstrate leadership and commitment to the ISMS?"
+query="What are the requirements for establishing and communicating the information security policy?"
+
+topk=5
 
 query_embeding=embedings.embed_query(query)
 results=client.query_points(
   collection_name="ragdata",  
   query=query_embeding,
-  limit=5
+  limit=topk
 )
 print("\n\n")
 print(f"The Query :  {query}")
