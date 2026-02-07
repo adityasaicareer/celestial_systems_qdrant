@@ -33,3 +33,18 @@ print(loader)
 
 docs=loader.load()
 ```
+
+### Chunking the Docuemnt
+
+```
+text_splitter=RecursiveCharacterTextSplitter(chunk_size=500,chunk_overlap=100)
+
+chunks=text_splitter.split_documents(docs)
+
+for idx,chunk in enumerate(chunks):
+  chunk.metadata["chunk_id"]=idx
+
+```
+The above Code was used to split the loaded document each with 500 Characters and 100 characters overlap with the Previous chunk to avoid Information loss
+
+
