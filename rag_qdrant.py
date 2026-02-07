@@ -7,6 +7,7 @@ from qdrant_client.http.models import VectorParams,Distance,PointStruct
 import re
 import pprint
 
+
 filepath="./example.pdf"
 
 loader=PyPDFLoader(filepath)
@@ -17,8 +18,6 @@ docs=loader.load()
 """ we use the RecursiveCharacterTextSplitter to maintain the context and paragraphs intact"""
 
 text_splitter=RecursiveCharacterTextSplitter(chunk_size=500,chunk_overlap=100)
-
-
 
 chunks=text_splitter.split_documents(docs)
 
