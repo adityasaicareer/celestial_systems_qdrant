@@ -3,8 +3,10 @@
 **Important:** This Code could run both in 3.11 and 3.14
 
 **Steps to Run the Code**
+* git clone https://github.com/adityasaicareer/celestial_systems_qdrant.git
+* cd celestial_systems_qdrant
 * pip install -r requirements.txt
-* python3 rag_qdrant.py
+* python rag_qdrant.py
 
 
 Libraries Required:
