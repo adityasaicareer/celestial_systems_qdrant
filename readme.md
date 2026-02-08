@@ -2,6 +2,11 @@
 
 **Important:** This Code could run both in 3.11 and 3.14
 
+**Rationale for Qdrant and all-MiniLM-L6-v2**
+
+* Qdrant was usually better than the FAISS and Chroma in production environment as it runs on RUST
+* all-MiniLM-L6-v2 widely used in Industry and Research , Provides fast inference and low memory usage and low dimention (384) embeding
+
 **Steps to Run the Code**
 * git clone https://github.com/adityasaicareer/celestial_systems_qdrant.git
 * cd celestial_systems_qdrant
