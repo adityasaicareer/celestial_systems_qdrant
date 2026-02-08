@@ -11,7 +11,6 @@ import pprint
 filepath="./example.pdf"
 
 loader=PyPDFLoader(filepath)
-print(loader)
 
 docs=loader.load()
 
@@ -67,25 +66,37 @@ query="What are the key steps involved in the information security risk assessme
 
 topk=3
 
-query_embeding=embedings.embed_query(query)
-results=client.query_points(
-  collection_name="ragdata",  
-  query=query_embeding,
-  limit=topk
-)
-print("\n\n")
-print(f"The Query :  {query}")
+def queryresponse(query,topk):
 
-for index,i in enumerate(results.points):
+  query_embeding=embedings.embed_query(query)
+  results=client.query_points(
+    collection_name="ragdata",  
+    query=query_embeding,
+    limit=topk
+  )
   print("\n\n")
-  print('-'*40)
-  print(f"\nResult : {index+1}")
-  print(f"\nChunk ID : {i.id}")
-  print(f"\nChunk Content :{i.payload['text']}")
+  print(f"The Query :  {query}")
 
-  print(f"\nScore : {i.score}")
-  print(f"\nPage :{i.payload['page']}")
-  print(f"\nSource : {i.payload['source']}")
+  for index,i in enumerate(results.points):
+    print("\n\n")
+    print('-'*40)
+    print(f"\nResult : {index+1}")
+    print(f"\nChunk ID : {i.id}")
+    print(f"\nChunk Content :{i.payload['text']}")
+
+    print(f"\nScore : {i.score}")
+    print(f"\nPage :{i.payload['page']}")
+    print(f"\nSource : {i.payload['source']}")
+
+print("Sample Output")
+queryresponse(query,topk)
+
+print("The Above is the sample output Please enter the query below....")
+
+query=input("Enter the query :")
+topk=int(input("Enter the value of TOP K : "))
+
+queryresponse(query,topk)
 
 client.close()
 
